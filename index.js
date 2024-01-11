@@ -1,13 +1,14 @@
 import express from "express";
+import ejs from "ejs";
 
 const app = express();
 
-app.use(express.json());
+app.set("view engine", "ejs");
+
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.status(200).send({
-    message: "Hola Mundo",
-  });
+  res.render("pages/index");
 });
 
 app.listen(3000, () => {
